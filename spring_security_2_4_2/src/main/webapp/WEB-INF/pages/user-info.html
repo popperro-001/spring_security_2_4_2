@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User Info</title>
+</head>
+<body>
+<h2>User Info</h2>
+<br>
+
+<form th:method="POST" th:action="@{/admin/saveUser}" th:object="${user}">
+
+
+    <div>
+        <label for="username">Username</label>
+        <input type="text" th:field="*{username}" id="username"/>
+        <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username error</div>
+    </div>
+    <br>
+    <div>
+        <label for="password">Password</label>
+        <input type="text" th:field="*{password}" id="password"/>
+        <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
+
+    </div>
+    <br>
+
+    <br>
+    <div>
+        <label for="email">Email</label>
+        <input type="text" th:field="*{email}" id="email"/>
+        <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
+    </div>
+    <br>
+    <div>
+        <label>
+            <input type="checkbox" name="adminRole"/>Admin
+        </label>
+    </div>
+    <br>
+    <div>
+        <label>
+            <input type="checkbox" name="userRole"/>User
+        </label>
+    </div>
+    <br>
+
+    <input type="submit" value="Create">
+
+</form>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+<h2>Users List</h2>
+<br>
+
+
+<table border="1">
+    <tr>
+
+        <th>ID</th>
+        <th>USERNAME</th>
+        <th>PASSWORD</th>
+        <th>EMAIL</th>
+        <th>ROLE</th>
+        <th>UPDATE</th>
+        <th>DELETE</th>
+
+    </tr>
+    <tr th:each="user: ${users}">
+
+
+        <td th:text="${user.getId()}">model</td>
+        <td th:text="${user.getUsername()}">model</td>
+        <td th:text="${user.getPassword()}">model</td>
+        <td th:text="${user.getEmail()}">model</td>
+        <td th:text="${user.getAuthorities()}">model</td>
+        <td>
+            <a th:href="@{/admin/{id}/edit(id=${user.getId()})}">UPDATE</a>
+
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/admin/{id}/delete(id=${user.getId()})}">
+                <input type="submit" value="DELETE"/>
+            </form>
+        </td>
+
+    </tr>
+</table>
+<br>
+<button type="button" th:onclick="|window.location.href='/admin/addNewUser'|">Add</button>
+<br>
+<br>
+<button type="button" th:onclick="|window.location.href='/logout'|">Logout</button>
+</body>
+</html>

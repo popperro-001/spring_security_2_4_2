@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User Update</title>
+</head>
+<body>
+<h2>User Info</h2>
+<br>
+
+<form th:method="post" th:action="@{/admin/saveUser}" th:object="${userById}">
+
+    <div>
+
+        <input type="hidden" th:field="*{id}" id="id"/>
+
+    </div>
+    <br>
+    <div>
+        <label for="username">Username</label>
+        <input type="text" th:field="*{username}" id="username"/>
+
+    </div>
+    <br>
+    <div>
+        <label for="password">Password</label>
+        <input type="text" th:field="*{password}" id="password"/>
+
+    </div>
+    <br>
+    <div>
+        <label for="email">Email</label>
+        <input type="text" th:field="*{email}" id="email"/>
+
+    </div>
+    <br>
+    <div>
+        <label>
+            <input type="checkbox" name="adminRole"/>Admin
+        </label>
+    </div>
+    <br>
+    <div>
+        <label>
+            <input type="checkbox" name="userRole"/>User
+        </label>
+    </div>
+    <br>
+    <input type="submit" value="Update">
+
+
+</form>
+</body>
+</html>
